@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>无标题文档</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+
+		<!-- basic styles -->
+
+		<link href="./support/ace/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="./support/ace/font-awesome.min.css" />
+
+		<!--[if IE 7]>
+		  <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css" />
+		<![endif]-->
+
+		<!-- page specific plugin styles -->
+
+		<link rel="stylesheet" href="./support/ace/jquery-ui-1.10.3.custom.min.css" />
+		<link rel="stylesheet" href="./support/ace/jquery.gritter.css" />
+
+		<!-- fonts -->
+
+		<link rel="stylesheet" href="./support/ace/ace-fonts.css" />
+
+		<!-- ace styles -->
+
+		<link rel="stylesheet" href="./support/ace/ace.min.css" />
+		<link rel="stylesheet" href="./support/ace/ace-rtl.min.css" />
+		<link rel="stylesheet" href="./support/ace/ace-skins.min.css" />
+</head>
+
+<body>
+		<script src="./support/ace/js/bootstrap.min.js"></script>
+		<script src="./support/ace/js/typeahead-bs2.min.js"></script>
+
+		<!-- page specific plugin scripts -->
+
+		<!--[if lte IE 8]>
+		  <script src="assets/js/excanvas.min.js"></script>
+		<![endif]-->
+
+		<script src="./support/ace/js/jquery-ui-1.10.3.custom.min.js"></script>
+		<script src="./support/ace/js/jquery.ui.touch-punch.min.js"></script>
+		<script src="./support/ace/js/bootbox.min.js"></script>
+		<script src="./support/ace/js/jquery.easy-pie-chart.min.js"></script>
+		<script src="./support/ace/js/jquery.gritter.min.js"></script>
+		<script src="./support/ace/js/spin.min.js"></script>
+
+		<!-- ace scripts -->
+
+		<script src="./support/ace/js/ace-elements.min.js"></script>
+		<script src="./support/ace/js/ace.min.js"></script>
+        
+        
+        
+<div class="col-sm-6">
+    <div class="tabbable">
+        <ul class="nav nav-tabs padding-12 tab-color-blue background-blue" id="myTab4">
+            <li class="active">
+                <a data-toggle="tab" href="#home4">Home</a>
+            </li>
+
+            <li class="">
+                <a data-toggle="tab" href="#profile4">Profile</a>
+            </li>
+
+            <li class="">
+                <a data-toggle="tab" href="#dropdown14">More</a>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="home4" class="tab-pane active">
+                <p>Raw denim you probably haven't heard of them jean shorts Austin.</p>
+            </div>
+
+            <div id="profile4" class="tab-pane">
+                <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.</p>
+            </div>
+
+            <div id="dropdown14" class="tab-pane">
+                <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade.</p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

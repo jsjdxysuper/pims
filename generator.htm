@@ -1,0 +1,310 @@
+
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Highcharts Example</title>
+  		<script type="text/javascript" src="./support/jquery-1.11.1.js"></script>
+        <link rel="stylesheet" type="text/css" href="./support/easyui/themes/default/easyui.css">   
+		<link rel="stylesheet" type="text/css" href="./support/easyui/themes/icon.css">   
+ 
+		<script type="text/javascript" src="./support/easyui/jquery.easyui.min.js"></script>  
+        
+		<script type="text/javascript" src="./support/jquery.dataTables.js"></script> 
+        <link rel="stylesheet" type="text/css" href="./support/jquery.dataTables.css">
+
+		<style type="text/css">
+${demo.css}
+		</style>
+		<script type="text/javascript">
+$(function () {
+	
+    var gaugeOptions = {
+	
+	    chart: {
+	        type: 'solidgauge'
+	    },
+	    
+	    title: null,
+	    
+	    pane: {
+	    	center: ['50%', '85%'],
+	    	size: '140%',
+	        startAngle: -90,
+	        endAngle: 90,
+            background: {
+                backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || '#EEE',
+                innerRadius: '60%',
+                outerRadius: '100%',
+                shape: 'arc'
+            }
+	    },
+
+	    tooltip: {
+	    	enabled: false
+	    },
+	       
+	    // the value axis
+	    yAxis: {
+			stops: [
+				[0.1, '#55BF3B'], // green
+	        	[0.5, '#DDDF0D'], // yellow
+	        	[0.9, '#DF5353'] // red
+			],
+			lineWidth: 0,
+            minorTickInterval: null,
+            tickPixelInterval: 400,
+            tickWidth: 0,
+	        title: {
+                y: -70
+	        },
+            labels: {
+                y: 16
+            }        
+	    },
+        
+        plotOptions: {
+            solidgauge: {
+                dataLabels: {
+                    y: 5,
+                    borderWidth: 0,
+                    useHTML: true
+                }
+            }
+        }
+    };
+    
+    // The speed gauge
+    $('#container-speed').highcharts(Highcharts.merge(gaugeOptions, {
+        yAxis: {
+	        min: 0,
+	        max: 100,
+	        title: {
+	            text: '机组名称#1'
+	        }       
+	    },
+
+	    credits: {
+	    	enabled: false
+	    },
+	
+	    series: [{
+	        name: 'Speed',
+	        data: [50],
+	        dataLabels: {
+	        	format: '<div style="text-align:center"><span style="font-size:25px;color:' + 
+                    ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y}</span><br/>' + 
+                   	'<span style="font-size:12px;color:silver">%</span></div>'
+	        },
+	        tooltip: {
+	            valueSuffix: ' km/h'
+	        }
+	    }]
+	
+	}));
+    
+    // The RPM gauge
+    $('#container-rpm').highcharts(Highcharts.merge(gaugeOptions, {
+        yAxis: {
+        	min: 0,
+        	max: 100,
+	        title: {
+	            text: '机组名称#2'
+	        }       
+	    },
+	
+	    series: [{
+	        name: 'RPM',
+	        data: [90],
+	        dataLabels: {
+	        	format: '<div style="text-align:center"><span style="font-size:25px;color:' + 
+                    ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y:.1f}</span><br/>' + 
+                   	'<span style="font-size:12px;color:silver">%</span></div>'
+	        },
+	        tooltip: {
+	            valueSuffix: ' revolutions/min'
+	        }      
+	    }]
+	
+	}));   
+	
+});
+
+
+$(function () {
+        $('#container').highcharts({
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: '60万机组对标(运行小时/电量)'
+            },
+            subtitle: {
+                text: ''
+            },
+            xAxis: {
+                categories: ['一值', '二值', '三值'],
+                title: {
+                    text: null
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: '电量/运行小时',
+                    align: 'high'
+                },
+                labels: {
+                    overflow: 'justify'
+                }
+            },
+            tooltip: {
+                valueSuffix: ' millions'
+            },
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        enabled: true
+                    }
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -10,
+                y: 80,
+                floating: true,
+                borderWidth: 1,
+                backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor || '#FFFFFF'),
+                shadow: true
+            },
+            credits: {
+                enabled: false
+            },
+            series: [{
+                name: '康平',
+                data: [107, 31, 635]
+            }, {
+                name: '庄河',
+                data: [133, 156, 947]
+            }, {
+                name: '营口',
+                data: [973, 514, 505]
+            }, {
+                name: '铁岭',
+                data: [373, 964, 205]
+            }, {
+                name: '清河',
+                data: [273, 414, 405]
+            }, {
+                name: '燕山湖',
+                data: [373, 814, 805]
+            }]
+        });
+    });
+		//修改easyui的日期框的显示格式
+	$.fn.datebox.defaults.formatter = function(date){
+		var y = date.getFullYear();
+		var m = date.getMonth()+1;
+		var d = date.getDate();
+		return y+'/'+m+'/'+d;
+	}
+	
+	
+	$(document).ready(function() {
+    	$('#table_id2').dataTable({
+			paging:false,
+			searching:false,
+			info:false
+		});
+	});
+		</script>
+	</head>
+	<body>
+<script src="./support/highcharts.js"></script>
+<script src="./support/highcharts-more.js"></script>
+
+<script src="./support/solid-gauge.src.js"></script> 
+
+<div style="width:600px;margin:0 auto">
+    <div style="margin-top:30px 20px">
+    
+        <div style="float:left;margin:3px 20px">日期</div>
+        <div style="float:left;">
+            <input id="dd" type="text"  class="easyui-datebox" required></input> 
+        </div> 
+        <div style="float:right;margin:0 50px">
+            <div>时间跨度</div>
+            <input type="radio" id="year" name="year_month_day" value="year" /><label for="year">年</label>
+            <input type="radio" id="month" name="year_month_day" value="month"/><label for="month">月</label>
+            <input type="radio" id="day" name="year_month_day" value="day"/><label for="day">日</label>
+        </div>
+        <div style="clear:both"></div>
+    </div>
+</div>
+
+<div style="margin:50px auto 0px auto;max-width:600px;padding:0 auto 30px auto">
+<table id="table_id2" class="display cell-border" cellspacing="0" style="width:100%;">   
+<thead>
+	<tr>
+    	<td colspan="4" style="text-align:center">本厂机组统计信息</td>
+    </tr>
+</thead>  
+    <tbody>   
+        <tr>   
+        	<td>容量</td><td>1245</td><td>最大出力</td><td>27233</td>   
+        </tr>   
+        <tr>   
+        	<td>平均出力</td><td>1545</td><td>最小出力</td><td>2323</td>   
+        </tr>   
+        <tr>   
+        	<td>发电量</td><td>1915</td><td>利用小时</td><td>2323</td>   
+        </tr>
+    </tbody> 
+    <tfoot><td colspan="4"></td></tfoot>  
+</table>  
+</div>
+<div style="width: 600px; height: 300px; margin: 0px auto 100px auto;text-align:center;">
+
+	<div style="text-align:center;width: 300px; height: 200px; float: left;">
+        <div id="container-speed" style="width: 300px; height: 200px;"></div>
+        <div style="margin:0 auto">机组运行方式</div>
+        <div style="margin:0 auto;width: 200px;">
+        	<div style="float:left; margin:0 6px">机组容量</div>
+            <div style="float:right;margin:0 6px">机组平均出力</div>
+        </div>
+        <div style="margin:0 auto;width: 200px;position:relative;">
+        	<div style="float:left; margin:0 6px">发电量</div>
+            <div style="float:right;margin:0 6px">最大出力</div>
+        </div>
+        <div style="margin:0 auto;width: 200px;position:relative;">
+        	<div style="float:left; margin:0 6px">最小出力</div>
+            <div style="float:right;margin:0 6px">实时出力</div>
+        </div>        
+    </div>
+    <div style="text-align:center;width: 300px; height: 200px; float: left;">
+        <div id="container-rpm" style="width: 300px; height: 200px; float: left"></div>
+        <div style="margin:0 auto">机组运行方式</div>
+        <div style="margin:0 auto;width: 200px;">
+        	<div style="float:left; margin:0 6px">机组容量</div>
+            <div style="float:right;margin:0 6px">机组平均出力</div>
+        </div>
+        <div style="margin:0 auto;width: 200px;position:relative;">
+        	<div style="float:left; margin:0 6px">发电量</div>
+            <div style="float:right;margin:0 6px">最大出力</div>
+        </div>
+        <div style="margin:0 auto;width: 200px;position:relative;">
+        	<div style="float:left; margin:0 6px">最小出力</div>
+            <div style="float:right;margin:0 6px">实时出力</div>
+        </div>        
+    </div>
+
+</div>
+
+
+
+
+<div id="container" style="min-width: 310px; max-width: 600px; height: 600px; margin: 0 auto"></div>
+	</body>
+</html>
