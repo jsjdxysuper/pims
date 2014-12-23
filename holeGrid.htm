@@ -28,16 +28,19 @@ $(function () {
 					lineWidth:3
 				}
 			},
+			exporting:{
+				enabled:false
+			},
 			labels:{
 				style:{
-					fontSize:"20px"
+					fontSize:"30px"
 				}
 			},
             title: {
                 text: '全网月度发电量',
                 x: -20, //center
 				style:{
-					fontSize:"20px"
+					fontSize:"30px"
 				}	
             },
             subtitle: {
@@ -49,7 +52,7 @@ $(function () {
                     'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 				labels:{
 					style:{
-					fontSize:"20px"
+					fontSize:"30px"
 					}
 				}
             },
@@ -57,14 +60,20 @@ $(function () {
                 title: {
                     text: '电量 (万)',
 					style:{
-					fontSize:"20px"
-				}
+						fontSize:"30px"
+					}
                 },
                 plotLines: [{
                     value: 0,
                     width: 1,
                     color: '#808080'
+					
                 }],
+				labele:{
+					style:{
+						fontSize:'30px'
+					}
+				}
 
             },
             tooltip: {
@@ -73,10 +82,12 @@ $(function () {
             legend: {
                 layout: 'vertical',
                 align: 'right',
-                verticalAlign: 'middle',
+				verticalAlign:'top',
+				floating:'true',
+				y:50,
                 borderWidth: 0,
 				itemStyle:{
-					 "fontSize": "22px",
+					 "fontSize": "30px",
 					 "fontWeight": "bold"	
 				}
             },
@@ -146,14 +157,14 @@ $(document).ready(function() {
 </div>
 
 
-<div id="lineContainer" style="min-width: 310px;max-width:750px;height: 600px; margin: 0 auto;font-size:36pt"></div>
+<div id="lineContainer" style="min-width: 310px;height: 800px; margin: 0 auto;font-size:36pt"></div>
 
 
 <br>
 <br>
 
-<div style="margin:50px auto;max-width:600px">
-<table id="table_id2" class="display cell-border" cellspacing="0" style="width:100%;">   
+<div style="margin:50px auto;">
+<table id="table_id2" class="display cell-border" cellspacing="0" style="width:100%;font-size:30px;height:600px">   
 	<caption><b>当日电网发电情况</b></caption>
     <thead>   
         <tr>   
