@@ -10,6 +10,19 @@
  
 		<script type="text/javascript" src="./support/easyui/jquery.easyui.min.js"></script> 
         
+        
+        
+        <!-- ace support-->
+        <link href="./support/assets/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="./support/assets/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="./support/assets/css/jquery-ui-1.10.3.custom.min.css" />
+		<link rel="stylesheet" href="./support/assets/css/jquery.gritter.css" />
+		<link rel="stylesheet" href="./support/assets/css/ace-fonts.css" />
+        <!--两种风格-->
+		<!--<link rel="stylesheet" href="./support/assets/css/ace.min.css" />-->
+		
+		
+        <script src="./support/assets/js/ace-extra.min.js"></script>
 
 		<script type="text/javascript">
 $(function () {
@@ -264,9 +277,41 @@ $(function () {
 </div>
 
 
-<div id="container2" style="min-width: 310px; max-width: 500px; height: 400px; margin: 20px auto"></div>
-<div id="container" style="min-width: 310px; max-width: 500px; height: 500px; margin: 50px auto"></div>
-<div id="container3" style="min-width: 310px; max-width: 500px; height: 500px; margin: 50px auto"></div>
 
+<div  style="min-width: 310px; max-width:600px;height: 500px; margin: 20px auto">
+<div class="col-sm-6" style="width:600px;margin:20px auto">
+    <div class="tabbable">
+        <ul class="nav nav-tabs padding-12 tab-color-blue background-blue" id="myTab4">
+            <li class="active">
+                <a data-toggle="tab" href="#home4">平均出力</a>
+            </li>
+
+            <li class="">
+                <a data-toggle="tab" href="#profile4">利用小时数</a>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="home4" class="tab-pane active">
+                <div id="container2" style="min-width: 510px; max-width: 500px; height: 400px;"></div>
+            </div>
+
+            <div id="profile4" class="tab-pane">
+                
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+		<div id="container" style="min-width: 310px; max-width: 500px; height: 500px; margin: 50px auto"></div>
+		<div id="container3" style="min-width: 310px; max-width: 500px; height: 500px; margin: 50px auto"></div>
+		<!--ace support-->
+		<script type="text/javascript">
+			window.jQuery || document.write("<script src='./support/assets/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+		</script>
+
+		</script>
+		<script src="./support/assets/js/bootstrap.min.js"></script>
 	</body>
 </html>

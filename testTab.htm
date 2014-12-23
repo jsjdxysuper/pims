@@ -26,13 +26,106 @@
 		<!-- ace styles -->
 
 		<link rel="stylesheet" href="./support/assets/css/ace.min.css" />
-		<link rel="stylesheet" href="./support/assets/css/ace-rtl.min.css" />
-		<link rel="stylesheet" href="./support/assets/css/ace-skins.min.css" />
+
         <script src="./support/assets/js/ace-extra.min.js"></script>
+        <script type="text/javascript" src="./support/jquery-1.11.1.js"></script>
+        <link rel="stylesheet" type="text/css" href="./support/easyui/themes/default/easyui.css">   
+		<link rel="stylesheet" type="text/css" href="./support/easyui/themes/icon.css">   
+ 
+		<script type="text/javascript" src="./support/easyui/jquery.easyui.min.js"></script> 
+        
+        <script type="text/javascript">
+        $(function () {
+        $('#container2').highcharts({
+            chart: {
+                type: 'area'
+            },
+            title: {
+                text: '周边电厂平均出力/利用小时数对标'
+            },
+            subtitle: {
+                text: ''
+            },
+            xAxis: {
+                allowDecimals: false,
+                labels: {
+                    formatter: function() {
+                        return this.value; // clean, unformatted number for year
+                    }
+                }
+            },
+			legend: {
+				itemStyle:{
+					 "fontSize": "22px",
+					 "fontWeight": "bold"	
+				}
+            },
+            yAxis: {
+                title: {
+                    text: '平均出力'
+                },
+                labels: {
+                    formatter: function() {
+                        return this.value / 1000 +'k';
+                    }
+                }
+            },
+            tooltip: {
+                pointFormat: '{series.name} produced <b>{point.y:,.0f}</b><br/>warheads in {point.x}'
+            },
+            plotOptions: {
+                area: {
+                    pointStart: 1,
+                    marker: {
+                        enabled: false,
+                        symbol: 'circle',
+                        radius: 2,
+                        states: {
+                            hover: {
+                                enabled: true
+                            }
+                        }
+                    }
+                }
+            },
+            series: [{
+                name: '康平',
+                data: [ 27912, 28999,
+                    22380, 21004, 17287, 12144, 11009, 10950,
+                    10871, 10824, 10577, 10527, 10475]
+            }, {
+                name: '庄河',
+                data: [660, 869, 1060, 1605, 2471, 3322,
+                4238, 5221, 6129, 7089, 8339, 24000, 23000
+				]
+            }, {
+                name: '营口',
+                data: [30062, 32049,
+                33952, 35804, 17431, 39197, 45000, 43000, 41000, 39000, 37000,
+                35000, 33000]
+            }, {
+                name: '铁岭',
+                data: [
+                15915, 17385, 11055, 27205, 23044, 15393, 27935, 30062, 35049,
+                33952, 35804, 37431, 39197]
+            }, {
+                name: '清河',
+                data: [4238, 5221, 6129, 7089, 8339, 9399, 10538, 11643, 13092, 11478,
+                15915, 12385, 19055]
+            }, {
+                name: '燕山湖',
+                data: [
+                1115, 25, 2350, 1120, 4150, 6200, 5426, 3660, 869, 81060, 11605, 28471, 83322]
+            }]
+        });
+    });
+	</script>
 </head>
 
 <body>
-		
+<script src="./support/highcharts.js"></script>
+<script src="./support/exporting.js"></script>
+<script type="text/javascript" src="./support/highcharts-more.js"></script> 		
         
         
 <div class="col-sm-6">
@@ -53,7 +146,7 @@
 
         <div class="tab-content">
             <div id="home4" class="tab-pane active">
-                <p>Raw denim you probably haven't heard of them jean shorts Austin.</p>
+                <div id="container2" style="min-width: 310px; max-width: 500px; height: 400px; margin: 20px auto"></div>
             </div>
 
             <div id="profile4" class="tab-pane">
