@@ -18,6 +18,7 @@
 		<link rel="stylesheet" href="./support/assets/css/jquery-ui-1.10.3.custom.min.css" />
 		<link rel="stylesheet" href="./support/assets/css/jquery.gritter.css" />
 		<link rel="stylesheet" href="./support/assets/css/ace-fonts.css" />
+ 
         <!--两种风格-->
 		<!--<link rel="stylesheet" href="./support/assets/css/ace.min.css" />-->
 		
@@ -25,25 +26,169 @@
         <script src="./support/assets/js/ace-extra.min.js"></script>
 
 		<script type="text/javascript">
+    
+$(function () {
+	$('#container2').highcharts({
+		chart: {
+			type: 'area'
+		},
+		title: {
+			text: '周边电厂平均出力/利用小时数对标',
+			style:{
+				fontSize:"30px"
+			}	
+		},
+		subtitle: {
+			text: ''
+		},
+		exporting:{
+			enabled:false
+		},
+		credits:{
+			enabled:'false',
+			text:''
+		},
+		xAxis: {
+			allowDecimals: false,
+			labels: {
+				formatter: function() {
+					return this.value; // clean, unformatted number for year
+				},
+				style:{
+					fontSize:"30px"
+				}
+			}
+		},
+		legend: {
+			itemStyle:{
+				 "fontSize": "40px",
+				 "fontWeight": "bold"	
+			}
+		},
+		yAxis: {
+			title: {
+				text: '平均出力',
+				style:{
+					fontSize:"30px"
+				}
+			},
+			labels: {
+				formatter: function() {
+					return this.value / 1000 +'k';
+				},
+				style:{
+					fontSize:"30px"
+				}
+			}
+		},
+		tooltip: {
+			pointFormat: '{series.name} produced <b>{point.y:,.0f}</b><br/>warheads in {point.x}'
+		},
+		plotOptions: {
+			area: {
+				pointStart: 1,
+				marker: {
+					enabled: false,
+					symbol: 'circle',
+					radius: 2,
+					states: {
+						hover: {
+							enabled: true
+						}
+					}
+				}
+			}
+		},
+		series: [{
+			name: '康平',
+			data: [ 27912, 28999,
+				22380, 21004, 17287, 12144, 11009, 10950,
+				10871, 10824, 10577, 10527, 10475]
+		}, {
+			name: '庄河',
+			data: [660, 869, 1060, 1605, 2471, 3322,
+			4238, 5221, 6129, 7089, 8339, 24000, 23000
+			]
+		}, {
+			name: '营口',
+			data: [30062, 32049,
+			33952, 35804, 17431, 39197, 45000, 43000, 41000, 39000, 37000,
+			35000, 33000]
+		}, {
+			name: '铁岭',
+			data: [
+			15915, 17385, 11055, 27205, 23044, 15393, 27935, 30062, 35049,
+			33952, 35804, 37431, 39197]
+		}, {
+			name: '清河',
+			data: [4238, 5221, 6129, 7089, 8339, 9399, 10538, 11643, 13092, 11478,
+			15915, 12385, 19055]
+		}, {
+			name: '燕山湖',
+			data: [
+			1115, 25, 2350, 1120, 4150, 6200, 5426, 3660, 869, 81060, 11605, 28471, 83322]
+		}]
+	});
+    });
+	
+
 $(function () {
         $('#container').highcharts({
             chart: {
                 type: 'bar'
             },
             title: {
-                text: '周边电厂累积发电量对标'
+                text: '周边电厂累积发电量对标',
+				style:{
+					fontSize:"30px"
+				}
             },
+			exporting:{
+				enabled:false
+			},
+			credits:{
+				enabled:'false',
+				text:''
+			},
+			labels:{
+				style:{
+					fontSize:"30px"
+				}
+			},
+			tooltip: {
+				style:{
+					fontSize:"18px",
+					padding:'5px'
+				}
+	    	},
             xAxis: {
-                categories: ['康平', '庄河', '营口', '铁岭', '清河','燕山湖']
+                categories: ['康平', '庄河', '营口', '铁岭', '清河','燕山湖'],
+				labels:{
+					style:{
+					fontSize:"30px"
+					}
+				}
             },
             yAxis: {
                 min: 0,
                 title: {
-                    text: '每月发电量'
-                }
+                    text: '每月发电量',
+					style:{
+						fontSize:"30px"
+					}
+                },
+				labels:{
+					style:{
+					fontSize:"30px"
+					}
+				}
             },
             legend: {
-                reversed: false
+                reversed: false,
+				itemStyle:{
+					 "fontSize": "40px",
+					 "fontWeight": "bold"	
+				}
             },
             plotOptions: {
                 series: {
@@ -90,92 +235,8 @@ $(function () {
 			]
         });
     });
-    
-$(function () {
-        $('#container2').highcharts({
-            chart: {
-                type: 'area'
-            },
-            title: {
-                text: '周边电厂平均出力/利用小时数对标'
-            },
-            subtitle: {
-                text: ''
-            },
-            xAxis: {
-                allowDecimals: false,
-                labels: {
-                    formatter: function() {
-                        return this.value; // clean, unformatted number for year
-                    }
-                }
-            },
-			legend: {
-				itemStyle:{
-					 "fontSize": "22px",
-					 "fontWeight": "bold"	
-				}
-            },
-            yAxis: {
-                title: {
-                    text: '平均出力'
-                },
-                labels: {
-                    formatter: function() {
-                        return this.value / 1000 +'k';
-                    }
-                }
-            },
-            tooltip: {
-                pointFormat: '{series.name} produced <b>{point.y:,.0f}</b><br/>warheads in {point.x}'
-            },
-            plotOptions: {
-                area: {
-                    pointStart: 1,
-                    marker: {
-                        enabled: false,
-                        symbol: 'circle',
-                        radius: 2,
-                        states: {
-                            hover: {
-                                enabled: true
-                            }
-                        }
-                    }
-                }
-            },
-            series: [{
-                name: '康平',
-                data: [ 27912, 28999,
-                    22380, 21004, 17287, 12144, 11009, 10950,
-                    10871, 10824, 10577, 10527, 10475]
-            }, {
-                name: '庄河',
-                data: [660, 869, 1060, 1605, 2471, 3322,
-                4238, 5221, 6129, 7089, 8339, 24000, 23000
-				]
-            }, {
-                name: '营口',
-                data: [30062, 32049,
-                33952, 35804, 17431, 39197, 45000, 43000, 41000, 39000, 37000,
-                35000, 33000]
-            }, {
-                name: '铁岭',
-                data: [
-                15915, 17385, 11055, 27205, 23044, 15393, 27935, 30062, 35049,
-                33952, 35804, 37431, 39197]
-            }, {
-                name: '清河',
-                data: [4238, 5221, 6129, 7089, 8339, 9399, 10538, 11643, 13092, 11478,
-                15915, 12385, 19055]
-            }, {
-                name: '燕山湖',
-                data: [
-                1115, 25, 2350, 1120, 4150, 6200, 5426, 3660, 869, 81060, 11605, 28471, 83322]
-            }]
-        });
-    });
-	
+
+
 
 
 $(function () {
@@ -188,25 +249,55 @@ $(function () {
 	    },
 	    
 	    title: {
-	        text: '本厂发电量日历进度'
+	        text: '本厂发电量日历进度',
+			style:{
+				fontSize:"30px"
+			}
 	    },
-	    
+	    exporting:{
+			enabled:false
+		},
+		credits:{
+			enabled:'false',
+			text:''
+		},
 		subtitle: {
-	        text: '2014年度'
+	        text: '2014年度',
+			style:{
+					fontSize:"22px"
+			}
 	    },
-	
+		labels:{
+			style:{
+				fontSize:"30px"
+			}
+		},
 	    xAxis: {
-	        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+	        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+			labels:{
+				style:{
+				fontSize:"30px"
+				}
+			}
 	    },
 	    
 	    yAxis: {
 	        title: {
 	            text: '发电量(万千瓦时)'
-	        }
+	        },
+			labels:{
+				style:{
+				fontSize:"30px"
+				}
+			}
 	    },
 	
 	    tooltip: {
-	        valueSuffix: '万千瓦时'
+	        valueSuffix: '万千瓦时',
+			style:{
+				fontSize:"20px",
+				padding:'5px'
+			}
 	    },
 	    
 	    plotOptions: {
@@ -215,7 +306,10 @@ $(function () {
 	        		enabled: true,
 	        		formatter: function () {
 	        			return this.y + '';
-	        		}                    
+	        		},
+					style:{
+						fontSize:'25px'
+					}                 
 	        	},
                 colorByPoint:true,
                  colors:['#8085e9','#8085e9','#8085e9', '#8085e9',
@@ -229,7 +323,7 @@ $(function () {
        
 	
 	    series: [{
-	        name: 'Temperatures',
+	        name: '发电量',
 	        data: [
 				[50, 110],
 				[200, 245],
@@ -278,12 +372,12 @@ $(function () {
 
 
 
-<div  style="min-width: 310px; max-width:600px;height: 500px; margin: 20px auto">
-<div class="col-sm-6" style="width:600px;margin:20px auto">
+<div  style="width: 100%;height: 900px;">
+<div class="col-sm-6" style="width:100%;margin:20px auto">
     <div class="tabbable">
-        <ul class="nav nav-tabs padding-12 tab-color-blue background-blue" id="myTab4">
-            <li class="active">
-                <a data-toggle="tab" href="#home4">平均出力</a>
+        <ul class="nav nav-tabs padding-12 tab-color-blue background-blue smaller-10" id="myTab4" style="font-size:30px" >
+            <li class="active ">
+                <a data-toggle="tab" href="#home4" >平均出力</a>
             </li>
 
             <li class="">
@@ -293,19 +387,20 @@ $(function () {
 
         <div class="tab-content">
             <div id="home4" class="tab-pane active">
-                <div id="container2" style="min-width: 510px; max-width: 500px; height: 400px;"></div>
+                <div id="container2" style="min-width: 510px;  height: 800px;"></div>
             </div>
 
-            <div id="profile4" class="tab-pane">
+            <div id="profile4" class="tab-pane" style="min-width: 510px;  height: 800px;">
                 
             </div>
         </div>
     </div>
 </div>
 </div>
-
-		<div id="container" style="min-width: 310px; max-width: 500px; height: 500px; margin: 50px auto"></div>
-		<div id="container3" style="min-width: 310px; max-width: 500px; height: 500px; margin: 50px auto"></div>
+<hr>
+		<div id="container" style="min-width: 310px;  height: 800px;"></div>
+        <hr>
+		<div id="container3" style="min-width: 310px; height: 800px;"></div>
 		<!--ace support-->
 		<script type="text/javascript">
 			window.jQuery || document.write("<script src='./support/assets/js/jquery-2.0.3.min.js'>"+"<"+"/script>");

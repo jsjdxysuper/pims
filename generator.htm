@@ -226,85 +226,88 @@ $(function () {
 <script src="./support/highcharts-more.js"></script>
 
 <script src="./support/solid-gauge.src.js"></script> 
+	<!--时间选择器-->
+    <div style="width:600px;margin:0 auto">
+        <div style="margin-top:30px 20px">
+        
+            <div style="float:left;margin:3px 20px">日期</div>
+            <div style="float:left;">
+                <input id="dd" type="text"  class="easyui-datebox" required></input> 
+            </div> 
+            <div style="float:right;margin:0 50px">
+                <div>时间跨度</div>
+                <input type="radio" id="year" name="year_month_day" value="year" /><label for="year">年</label>
+                <input type="radio" id="month" name="year_month_day" value="month"/><label for="month">月</label>
+                <input type="radio" id="day" name="year_month_day" value="day"/><label for="day">日</label>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+    </div>
 
-<div style="width:600px;margin:0 auto">
-    <div style="margin-top:30px 20px">
+    <!--机组的统计信息(表格)-->
+    <div style="margin:50px auto 0px auto;padding:0 auto 30px auto">
+        <table id="table_id2" class="display cell-border" cellspacing="0" style="width:100%;font-size:30px;height:600px"">   
+        <thead>
+            <tr>
+                <td colspan="4" style="text-align:center">本厂机组统计信息</td>
+            </tr>
+        </thead>  
+            <tbody>   
+                <tr>   
+                    <td>容量</td><td>1245</td><td>最大出力</td><td>27233</td>   
+                </tr>   
+                <tr>   
+                    <td>平均出力</td><td>1545</td><td>最小出力</td><td>2323</td>   
+                </tr>   
+                <tr>   
+                    <td>发电量</td><td>1915</td><td>利用小时</td><td>2323</td>   
+                </tr>
+            </tbody> 
+            <tfoot><td colspan="4"></td></tfoot>  
+        </table>  
+    </div>
+
+    <!--机组实时信息(表盘)-->
+    <div style="width: 600px; height: 300px; margin: 0px auto 100px auto;text-align:center;">
     
-        <div style="float:left;margin:3px 20px">日期</div>
-        <div style="float:left;">
-            <input id="dd" type="text"  class="easyui-datebox" required></input> 
-        </div> 
-        <div style="float:right;margin:0 50px">
-            <div>时间跨度</div>
-            <input type="radio" id="year" name="year_month_day" value="year" /><label for="year">年</label>
-            <input type="radio" id="month" name="year_month_day" value="month"/><label for="month">月</label>
-            <input type="radio" id="day" name="year_month_day" value="day"/><label for="day">日</label>
+        <div style="text-align:center;width: 300px; height: 200px; float: left;">
+            <div id="container-speed" style="width: 300px; height: 200px;"></div>
+            <div style="margin:0 auto">机组运行方式</div>
+            <div style="margin:0 auto;width: 200px;">
+                <div style="float:left; margin:0 6px">机组容量</div>
+                <div style="float:right;margin:0 6px">机组平均出力</div>
+            </div>
+            <div style="margin:0 auto;width: 200px;position:relative;">
+                <div style="float:left; margin:0 6px">发电量</div>
+                <div style="float:right;margin:0 6px">最大出力</div>
+            </div>
+            <div style="margin:0 auto;width: 200px;position:relative;">
+                <div style="float:left; margin:0 6px">最小出力</div>
+                <div style="float:right;margin:0 6px">实时出力</div>
+            </div>        
         </div>
-        <div style="clear:both"></div>
-    </div>
-</div>
-
-<div style="margin:50px auto 0px auto;max-width:600px;padding:0 auto 30px auto">
-<table id="table_id2" class="display cell-border" cellspacing="0" style="width:100%;">   
-<thead>
-	<tr>
-    	<td colspan="4" style="text-align:center">本厂机组统计信息</td>
-    </tr>
-</thead>  
-    <tbody>   
-        <tr>   
-        	<td>容量</td><td>1245</td><td>最大出力</td><td>27233</td>   
-        </tr>   
-        <tr>   
-        	<td>平均出力</td><td>1545</td><td>最小出力</td><td>2323</td>   
-        </tr>   
-        <tr>   
-        	<td>发电量</td><td>1915</td><td>利用小时</td><td>2323</td>   
-        </tr>
-    </tbody> 
-    <tfoot><td colspan="4"></td></tfoot>  
-</table>  
-</div>
-<div style="width: 600px; height: 300px; margin: 0px auto 100px auto;text-align:center;">
-
-	<div style="text-align:center;width: 300px; height: 200px; float: left;">
-        <div id="container-speed" style="width: 300px; height: 200px;"></div>
-        <div style="margin:0 auto">机组运行方式</div>
-        <div style="margin:0 auto;width: 200px;">
-        	<div style="float:left; margin:0 6px">机组容量</div>
-            <div style="float:right;margin:0 6px">机组平均出力</div>
+        <div style="text-align:center;width: 300px; height: 200px; float: left;">
+            <div id="container-rpm" style="width: 300px; height: 200px; float: left"></div>
+            <div style="margin:0 auto">机组运行方式</div>
+            <div style="margin:0 auto;width: 200px;">
+                <div style="float:left; margin:0 6px">机组容量</div>
+                <div style="float:right;margin:0 6px">机组平均出力</div>
+            </div>
+            <div style="margin:0 auto;width: 200px;position:relative;">
+                <div style="float:left; margin:0 6px">发电量</div>
+                <div style="float:right;margin:0 6px">最大出力</div>
+            </div>
+            <div style="margin:0 auto;width: 200px;position:relative;">
+                <div style="float:left; margin:0 6px">最小出力</div>
+                <div style="float:right;margin:0 6px">实时出力</div>
+            </div>        
         </div>
-        <div style="margin:0 auto;width: 200px;position:relative;">
-        	<div style="float:left; margin:0 6px">发电量</div>
-            <div style="float:right;margin:0 6px">最大出力</div>
-        </div>
-        <div style="margin:0 auto;width: 200px;position:relative;">
-        	<div style="float:left; margin:0 6px">最小出力</div>
-            <div style="float:right;margin:0 6px">实时出力</div>
-        </div>        
-    </div>
-    <div style="text-align:center;width: 300px; height: 200px; float: left;">
-        <div id="container-rpm" style="width: 300px; height: 200px; float: left"></div>
-        <div style="margin:0 auto">机组运行方式</div>
-        <div style="margin:0 auto;width: 200px;">
-        	<div style="float:left; margin:0 6px">机组容量</div>
-            <div style="float:right;margin:0 6px">机组平均出力</div>
-        </div>
-        <div style="margin:0 auto;width: 200px;position:relative;">
-        	<div style="float:left; margin:0 6px">发电量</div>
-            <div style="float:right;margin:0 6px">最大出力</div>
-        </div>
-        <div style="margin:0 auto;width: 200px;position:relative;">
-        	<div style="float:left; margin:0 6px">最小出力</div>
-            <div style="float:right;margin:0 6px">实时出力</div>
-        </div>        
+    
     </div>
 
-</div>
 
 
 
-
-<div id="container" style="min-width: 310px; max-width: 600px; height: 600px; margin: 0 auto"></div>
+		<div id="container" style="min-width: 310px; max-width: 600px; height: 600px; margin: 0 auto"></div>
 	</body>
 </html>

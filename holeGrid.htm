@@ -7,7 +7,7 @@
 
 		<script type="text/javascript" src="./support/jquery-1.11.1.js"></script>
         
-        
+        <link href="./support/assets/css/bootstrap.min.css" rel="stylesheet" />
         <link rel="stylesheet" type="text/css" href="./support/easyui/themes/default/easyui.css">   
 		<link rel="stylesheet" type="text/css" href="./support/easyui/themes/icon.css">   
         <link rel="stylesheet" type="text/css" href="./support/jquery.dataTables.css">
@@ -30,6 +30,10 @@ $(function () {
 			},
 			exporting:{
 				enabled:false
+			},
+			credits:{
+				enabled:'false',
+				text:''
 			},
 			labels:{
 				style:{
@@ -69,12 +73,11 @@ $(function () {
                     color: '#808080'
 					
                 }],
-				labele:{
+				labels:{
 					style:{
-						fontSize:'30px'
+					fontSize:"30px"
 					}
 				}
-
             },
             tooltip: {
                 valueSuffix: '°C'
@@ -87,7 +90,7 @@ $(function () {
 				y:50,
                 borderWidth: 0,
 				itemStyle:{
-					 "fontSize": "30px",
+					 "fontSize": "40px",
 					 "fontWeight": "bold"	
 				}
             },
@@ -157,13 +160,14 @@ $(document).ready(function() {
 </div>
 
 
-<div id="lineContainer" style="min-width: 310px;height: 800px; margin: 0 auto;font-size:36pt"></div>
+<div id="lineContainer" style="width: 100%;height: 800px;font-size:36pt"></div>
 
 
 <br>
+<hr>
 <br>
 
-<div style="margin:50px auto;">
+<div style="margin-top:50px;height:800px">
 <table id="table_id2" class="display cell-border" cellspacing="0" style="width:100%;font-size:30px;height:600px">   
 	<caption><b>当日电网发电情况</b></caption>
     <thead>   
@@ -201,7 +205,8 @@ $(document).ready(function() {
         <tr>   
             <td>联络线净受</td><td>1744</td><td>4612</td><td>2313</td><td>6.1%</td><td>1.1%</td>   
         </tr>
-    </tbody>   
+    </tbody>  
+    <tfoot><td colspan="6"></td></tfoot>   
 </table>  
 </div>
 
