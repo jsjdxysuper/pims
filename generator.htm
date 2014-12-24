@@ -10,8 +10,8 @@
  
 		<script type="text/javascript" src="./support/easyui/jquery.easyui.min.js"></script>  
         
-		<script type="text/javascript" src="./support/jquery.dataTables.js"></script> 
-        <link rel="stylesheet" type="text/css" href="./support/jquery.dataTables.css">
+		<script type="text/javascript" src="./support/datatable/media/js/jquery.dataTables.js"></script> 
+        <link rel="stylesheet" type="text/css" href="./support/datatable/media/css/jquery.dataTables.css">
 
 		<style type="text/css">
 ${demo.css}
@@ -56,11 +56,17 @@ $(function () {
             tickPixelInterval: 400,
             tickWidth: 0,
 	        title: {
-                y: -70
+                y: -90,//标题的位置
+				style:{
+					fontSize:"30px"
+				}
 	        },
             labels: {
-                y: 16
-            }        
+                y: 30,//表盘刻度位置
+				style:{
+					fontSize:"30px"//表盘刻度的文字大小
+				}
+            }   
 	    },
         
         plotOptions: {
@@ -92,9 +98,9 @@ $(function () {
 	        name: 'Speed',
 	        data: [50],
 	        dataLabels: {
-	        	format: '<div style="text-align:center"><span style="font-size:25px;color:' + 
+	        	format: '<div style="text-align:center"><span style="font-size:35px;color:' + 
                     ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y}</span><br/>' + 
-                   	'<span style="font-size:12px;color:silver">%</span></div>'
+                   	'<span style="font-size:22px;color:silver">%</span></div>'
 	        },
 	        tooltip: {
 	            valueSuffix: ' km/h'
@@ -110,16 +116,16 @@ $(function () {
         	max: 100,
 	        title: {
 	            text: '机组名称#2'
-	        }       
+	        },    
 	    },
 	
 	    series: [{
 	        name: 'RPM',
 	        data: [90],
 	        dataLabels: {
-	        	format: '<div style="text-align:center"><span style="font-size:25px;color:' + 
+	        	format: '<div style="text-align:center"><span style="font-size:35px;color:' + 
                     ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y:.1f}</span><br/>' + 
-                   	'<span style="font-size:12px;color:silver">%</span></div>'
+                   	'<span style="font-size:22px;color:silver">%</span></div>'
 	        },
 	        tooltip: {
 	            valueSuffix: ' revolutions/min'
@@ -203,6 +209,7 @@ $(function () {
             }]
         });
     });
+
 		//修改easyui的日期框的显示格式
 	$.fn.datebox.defaults.formatter = function(date){
 		var y = date.getFullYear();
@@ -210,24 +217,28 @@ $(function () {
 		var d = date.getDate();
 		return y+'/'+m+'/'+d;
 	}
-	
+
 	
 	$(document).ready(function() {
+
+			
     	$('#table_id2').dataTable({
 			paging:false,
 			searching:false,
 			info:false
 		});
+
 	});
+		
 		</script>
 	</head>
 	<body>
-<script src="./support/highcharts.js"></script>
-<script src="./support/highcharts-more.js"></script>
+<script src="./support/highcharts/js/highcharts.js"></script>
+<script src="./support/highcharts/js/highcharts-more.js"></script>
 
-<script src="./support/solid-gauge.src.js"></script> 
+<script src="./support/highcharts/js/modules/solid-gauge.src.js"></script> 
 	<!--时间选择器-->
-    <div style="width:600px;margin:0 auto">
+    <div style="width:600px;margin: 0px auto 100px auto;">
         <div style="margin-top:30px 20px">
         
             <div style="float:left;margin:3px 20px">日期</div>
@@ -245,8 +256,8 @@ $(function () {
     </div>
 
     <!--机组的统计信息(表格)-->
-    <div style="margin:50px auto 0px auto;padding:0 auto 30px auto">
-        <table id="table_id2" class="display cell-border" cellspacing="0" style="width:100%;font-size:30px;height:600px"">   
+    <div style="margin: 0px auto 20px auto;padding:0 auto 30px auto">
+        <table id="table_id2" class="display cell-border" cellspacing="0" style="width:100%;font-size:30px;height:500px"">   
         <thead>
             <tr>
                 <td colspan="4" style="text-align:center">本厂机组统计信息</td>
@@ -268,36 +279,37 @@ $(function () {
     </div>
 
     <!--机组实时信息(表盘)-->
-    <div style="width: 600px; height: 300px; margin: 0px auto 100px auto;text-align:center;">
+    <div style=" height: 600px; margin: 0px auto 30px auto;text-align:center;font-size:36px;">
+    	<div style="height:50px"></div>
     
-        <div style="text-align:center;width: 300px; height: 200px; float: left;">
-            <div id="container-speed" style="width: 300px; height: 200px;"></div>
+        <div style="text-align:center;width: 50%; height: 500px; float: left;">
+            <div id="container-speed" style=""></div>
             <div style="margin:0 auto">机组运行方式</div>
-            <div style="margin:0 auto;width: 200px;">
+            <div style="margin:0 auto;width: 100%;">
                 <div style="float:left; margin:0 6px">机组容量</div>
-                <div style="float:right;margin:0 6px">机组平均出力</div>
+                <div style="float:right;margin:0 6px">平均出力</div>
             </div>
-            <div style="margin:0 auto;width: 200px;position:relative;">
+            <div style="margin:0 auto;width: 100%;position:relative;">
                 <div style="float:left; margin:0 6px">发电量</div>
                 <div style="float:right;margin:0 6px">最大出力</div>
             </div>
-            <div style="margin:0 auto;width: 200px;position:relative;">
+            <div style="margin:0 auto;width: 100%;position:relative;">
                 <div style="float:left; margin:0 6px">最小出力</div>
                 <div style="float:right;margin:0 6px">实时出力</div>
             </div>        
         </div>
-        <div style="text-align:center;width: 300px; height: 200px; float: left;">
-            <div id="container-rpm" style="width: 300px; height: 200px; float: left"></div>
+        <div style="text-align:center;width: 50%; height: 600px; float: left;">
+            <div id="container-rpm" style=""></div>
             <div style="margin:0 auto">机组运行方式</div>
-            <div style="margin:0 auto;width: 200px;">
+            <div style="margin:0 auto;width: 100%;">
                 <div style="float:left; margin:0 6px">机组容量</div>
-                <div style="float:right;margin:0 6px">机组平均出力</div>
+                <div style="float:right;margin:0 6px">平均出力</div>
             </div>
-            <div style="margin:0 auto;width: 200px;position:relative;">
+            <div style="margin:0 auto;width: 100%;position:relative;">
                 <div style="float:left; margin:0 6px">发电量</div>
                 <div style="float:right;margin:0 6px">最大出力</div>
             </div>
-            <div style="margin:0 auto;width: 200px;position:relative;">
+            <div style="margin:0 auto;width: 100%;position:relative;">
                 <div style="float:left; margin:0 6px">最小出力</div>
                 <div style="float:right;margin:0 6px">实时出力</div>
             </div>        
@@ -308,6 +320,24 @@ $(function () {
 
 
 
-		<div id="container" style="min-width: 310px; max-width: 600px; height: 600px; margin: 0 auto"></div>
+		<div id="container" style="min-width: 310px; max-width: 600px; height: 600px; margin: 0px auto 100px auto"></div>
+        <script type="text/javascript">
+			var resize_gauge = function()
+			{
+					container_speed=document.getElementById('container-speed');
+					container_rpm=document.getElementById('container-rpm');
+					//table_width=document.getElementById('table_id2').offsetWidth;
+					table_width=window.screen.width;
+					wid=table_width/2;
+					container_speed.style.width=(wid)+'px';
+					container_rpm.style.width=(wid)+'px';
+					
+					container_speed.style.height=(wid/4*3)+'px';
+					container_rpm.style.height=(wid/4*3)+'px';
+			}
+			
+			window.onresize= resize_gauge;
+			resize_gauge();
+        </script>
 	</body>
 </html>
