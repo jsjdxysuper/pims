@@ -2,6 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
+    	<meta name="viewport" content="width=device-width">
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>Highcharts Example</title>
   		<script type="text/javascript" src="./support/jquery-1.11.1.js"></script>
@@ -59,16 +60,11 @@ $(function () {
             tickPixelInterval: 400,
             tickWidth: 0,
 	        title: {
-                y: -120,//标题的位置
-				style:{
-					fontSize:"30px"
-				}
+                y: -120//标题的位置
 	        },
             labels: {
-                y: 30,//表盘刻度位置
-				style:{
-					fontSize:"30px"//表盘刻度的文字大小
-				}
+                y: 30//表盘刻度位置
+
             }   
 	    },
         
@@ -101,9 +97,9 @@ $(function () {
 	        name: 'Speed',
 	        data: [50],
 	        dataLabels: {
-	        	format: '<div style="text-align:center"><span style="font-size:35px;color:' + 
+	        	format: '<div style="text-align:center"><span style="font-size:18px;color:' + 
                     ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y}</span><br/>' + 
-                   	'<span style="font-size:22px;color:silver">%</span></div>'
+                   	'<span style="font-size:16px;color:silver">%</span></div>'
 	        },
 	        tooltip: {
 	            valueSuffix: ' km/h'
@@ -126,9 +122,9 @@ $(function () {
 	        name: 'RPM',
 	        data: [90],
 	        dataLabels: {
-	        	format: '<div style="text-align:center"><span style="font-size:35px;color:' + 
+	        	format: '<div style="text-align:center"><span style="font-size:18px;color:' + 
                     ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y:.1f}</span><br/>' + 
-                   	'<span style="font-size:22px;color:silver">%</span></div>'
+                   	'<span style="font-size:16px;color:silver">%</span></div>'
 	        },
 	        tooltip: {
 	            valueSuffix: ' revolutions/min'
@@ -146,10 +142,7 @@ $(function () {
                 type: 'bar'
             },
             title: {
-                text: '60万机组对标(运行小时/电量)',
-				style:{
-					fontSize:'30px'
-				}
+                text: '60万机组对标(运行小时/电量)'
             },
             subtitle: {
                 text: ''
@@ -157,32 +150,20 @@ $(function () {
             xAxis: {
                 categories: ['白班', '早夜', '晚夜'],
                 title: {
-                    text: null,
-					style:{
-						fontSize:"30px"
-					}				
+                    text: null			
                 },
 				labels: {
-                    overflow: 'justify',
-					style:{
-						fontSize:"30px"
-					}
+                    overflow: 'justify'
                 }
             },
             yAxis: {
                 min: 0,
                 title: {
                     text: '电量/运行小时',
-                    align: 'high',
-					style:{
-						fontSize:"30px"
-					}
+                    align: 'high'
                 },
                 labels: {
-                    overflow: 'justify',
-					style:{
-						fontSize:"30px"
-					}
+                    overflow: 'justify'
                 }
             },
             tooltip: {
@@ -204,11 +185,7 @@ $(function () {
                 floating: true,
                 borderWidth: 1,
                 backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor || '#FFFFFF'),
-                shadow: true,
-				itemStyle:{
-					 "fontSize": "25px",
-					 "fontWeight": "bold"	
-				}
+                shadow: true
             },
             credits: {
                 enabled: false
@@ -263,7 +240,7 @@ $(function () {
 
 <script src="./support/highcharts/js/modules/solid-gauge.src.js"></script> 
 	<!--时间选择器-->
-    <div style="width:600px;margin: 0px auto 100px auto;">
+    <div style="margin: 0px auto 10px auto;">
         <div style="margin-top:30px 20px">
         
             <div style="float:left;margin:3px 20px">日期</div>
@@ -281,8 +258,8 @@ $(function () {
     </div>
 
     <!--机组的统计信息(表格)-->
-    <div style="margin: 0px auto 20px auto;padding:0 auto 30px auto">
-        <table id="table_id2" class="display cell-border" cellspacing="0" style="font-size:30px;height:500px"">   
+    <div style="margin: 0px auto 20px auto;">
+        <table id="table_id2" class="display cell-border" cellspacing="0" style="height:300px"">   
         <thead>
             <tr>
                 <td colspan="4" style="text-align:center">本厂机组统计信息</td>
@@ -304,10 +281,10 @@ $(function () {
     </div>
 
     <!--机组实时信息(表盘)-->
-    <div style=" height: 600px; margin: 0px auto 100px auto;text-align:center;font-size:36px;">
+    <div style=" height: 400px; margin: 0px auto 20px auto;text-align:center;">
     	<div style="height:50px"></div>
     
-        <div style="text-align:center;width: 50%; height: 500px; float: left;">
+        <div style="text-align:center;width: 50%; height: 200px; float: left;">
             <div id="container-speed" style=""></div>
             <div style="margin:0 auto">机组运行方式</div>
             <div style="margin:0 auto;width: 50%;float:left;">
@@ -321,7 +298,7 @@ $(function () {
                 <div style="">实时出力</div>
             </div>     
         </div>
-        <div style="text-align:center;width: 50%; height: 600px; float: left;">
+        <div style="text-align:center;width: 50%; height: 200px; float: left;">
             <div id="container-rpm" style=""></div>
             <div style="margin:0 auto;text-align:center;width:100%">机组运行方式</div>
             <div style="margin:0 auto;width: 50%;float:left;">
@@ -342,7 +319,7 @@ $(function () {
 
 
 
-		<div id="container" style="min-width: 310px;  height: 800px; margin: 0px 10px 100px 10px"></div>
+		<div id="container" style=" height: 400px; margin: 0px 10px 20px 10px"></div>
         <script type="text/javascript">
 			var resize_gauge = function()
 			{
