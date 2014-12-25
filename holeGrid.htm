@@ -2,6 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
+    <meta name="viewport" content="width=device-width">
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>Highcharts Example</title>
 
@@ -36,7 +37,7 @@
 				border-radius: 5px;
 				-moz-box-sizing: border-box;
 				-webkit-box-sizing: border-box;
-				-webkit-border-radius: 5px;
+				-webkit-border-radius: 5px;			
 			}
 
     	</style>
@@ -44,13 +45,11 @@
 $(function () {
         $('#lineContainer').highcharts({
 			chart:{
-				style:{
-					fontSize:"36px"
-				}	
+				spacingLeft:0
 			},
 			plotOptions:{
 				line:{
-					lineWidth:3
+					lineWidth:2
 				}
 			},
 			exporting:{
@@ -61,16 +60,10 @@ $(function () {
 				text:''
 			},
 			labels:{
-				style:{
-					fontSize:"30px"
-				}
 			},
             title: {
                 text: '全网月度发电量',
                 x: -20, //center
-				style:{
-					fontSize:"30px"
-				}	
             },
             subtitle: {
                 text: '',
@@ -79,18 +72,10 @@ $(function () {
             xAxis: {
                 categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
                     'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-				labels:{
-					style:{
-					fontSize:"30px"
-					}
-				}
             },
             yAxis: {
                 title: {
                     text: '电量 (万)',
-					style:{
-						fontSize:"30px"
-					}
                 },
                 plotLines: [{
                     value: 0,
@@ -99,9 +84,7 @@ $(function () {
 					
                 }],
 				labels:{
-					style:{
-					fontSize:"30px"
-					}
+
 				}
             },
             tooltip: {
@@ -114,10 +97,6 @@ $(function () {
 				floating:'true',
 				y:50,
                 borderWidth: 0,
-				itemStyle:{
-					 "fontSize": "25px",
-					 "fontWeight": "bold"	
-				}
             },
             series: [{
                 name: '去年同期',
@@ -159,7 +138,7 @@ $(function () {
 			<!--Script-->
 			change=function() {
 
-            $('#test_default').val('').scroller('destroy').scroller($.extend(opt['date'], { theme:'android', mode: 'scroller', display: 'bubble', lang: 'zh' }));
+            $('#test_default').val('').scroller('destroy').scroller($.extend(opt['date'], { theme:'android', mode: 'scroller', display: 'modal', lang: 'zh' }));
             };
 			change();
         });
@@ -176,38 +155,29 @@ $(function () {
 </style>
 <script src="./support/highcharts/js/highcharts.js"></script>
 <script src="./support/highcharts/js/exporting.js"></script>
-<div id="rootContainer" style="text-align:center;">
-<div id="container" style="width:90%;text-align:center;margin:50px auto">
 
 
-<div style="margin:0 auto">
-    <div style="margin:30px 20px">
-    
-
-        <div id="demo_default" class="demos">
-            <label for="test_default">日期</label>
+            <label for="test_default" style="float:left;margin-right:10px;">日期</label>
             <input type="text" name="test_default" id="test_default" />
-        </div>
-        <div style="float:right;margin:0 50px">
-            <div>时间跨度</div>
-            <input type="radio" id="year" name="year_month_day" value="year" /><label for="year">年</label>
-            <input type="radio" id="month" name="year_month_day" value="month"/><label for="month">月</label>
-            <input type="radio" id="day" name="year_month_day" value="day"/><label for="day">日</label>
-        </div>
-        <div style="clear:both"></div>
-    </div>
-</div>
+            <label for="test_default" style="float:left;margin-right:10px;">时间跨度</label>
+            <select name="time_span" id="time_span" >
+                <option value="year">年</option>
+                <option value="month">月</option>
+                <option value="day">日</option>
+                <option value="real_time">实时</option>
+            </select>
 
 
-<div id="lineContainer" style="width: 100%;height: 800px;font-size:36pt"></div>
+
+<div id="lineContainer" style="width: 100%;height: 400px;"></div>
 
 
 <br>
 <hr>
 <br>
 
-<div style="margin-top:50px;height:600px">
-<table id="table_id2" class="display cell-border" cellspacing="0" style="width:100%;font-size:30px;height:600px">   
+<div style="height:300px;margin-top:20px">
+<table id="table_id2" class="display cell-border" cellspacing="0" style="width:100%;height:300px">   
 	<caption><b>当日电网发电情况</b></caption>
     <thead>   
         <tr>   
