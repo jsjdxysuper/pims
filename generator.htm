@@ -43,7 +43,10 @@ $(function () {
 	    tooltip: {
 	    	enabled: false
 	    },
-	       
+	    credits:{
+			enabled:'false',
+			text:''
+		}, 
 	    // the value axis
 	    yAxis: {
 			stops: [
@@ -56,7 +59,7 @@ $(function () {
             tickPixelInterval: 400,
             tickWidth: 0,
 	        title: {
-                y: -90,//标题的位置
+                y: -120,//标题的位置
 				style:{
 					fontSize:"30px"
 				}
@@ -143,25 +146,43 @@ $(function () {
                 type: 'bar'
             },
             title: {
-                text: '60万机组对标(运行小时/电量)'
+                text: '60万机组对标(运行小时/电量)',
+				style:{
+					fontSize:'30px'
+				}
             },
             subtitle: {
                 text: ''
             },
             xAxis: {
-                categories: ['一值', '二值', '三值'],
+                categories: ['白班', '早夜', '晚夜'],
                 title: {
-                    text: null
+                    text: null,
+					style:{
+						fontSize:"30px"
+					}				
+                },
+				labels: {
+                    overflow: 'justify',
+					style:{
+						fontSize:"30px"
+					}
                 }
             },
             yAxis: {
                 min: 0,
                 title: {
                     text: '电量/运行小时',
-                    align: 'high'
+                    align: 'high',
+					style:{
+						fontSize:"30px"
+					}
                 },
                 labels: {
-                    overflow: 'justify'
+                    overflow: 'justify',
+					style:{
+						fontSize:"30px"
+					}
                 }
             },
             tooltip: {
@@ -183,7 +204,11 @@ $(function () {
                 floating: true,
                 borderWidth: 1,
                 backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor || '#FFFFFF'),
-                shadow: true
+                shadow: true,
+				itemStyle:{
+					 "fontSize": "25px",
+					 "fontWeight": "bold"	
+				}
             },
             credits: {
                 enabled: false
@@ -257,7 +282,7 @@ $(function () {
 
     <!--机组的统计信息(表格)-->
     <div style="margin: 0px auto 20px auto;padding:0 auto 30px auto">
-        <table id="table_id2" class="display cell-border" cellspacing="0" style="width:100%;font-size:30px;height:500px"">   
+        <table id="table_id2" class="display cell-border" cellspacing="0" style="font-size:30px;height:500px"">   
         <thead>
             <tr>
                 <td colspan="4" style="text-align:center">本厂机组统计信息</td>
@@ -279,39 +304,36 @@ $(function () {
     </div>
 
     <!--机组实时信息(表盘)-->
-    <div style=" height: 600px; margin: 0px auto 30px auto;text-align:center;font-size:36px;">
+    <div style=" height: 600px; margin: 0px auto 100px auto;text-align:center;font-size:36px;">
     	<div style="height:50px"></div>
     
         <div style="text-align:center;width: 50%; height: 500px; float: left;">
             <div id="container-speed" style=""></div>
             <div style="margin:0 auto">机组运行方式</div>
-            <div style="margin:0 auto;width: 100%;">
-                <div style="float:left; margin:0 6px">机组容量</div>
-                <div style="float:right;margin:0 6px">平均出力</div>
+            <div style="margin:0 auto;width: 50%;float:left;">
+                <div style=" ">机组容量</div>
+                <div style="">发电量</div>
+                <div style="">最小出力</div>
             </div>
-            <div style="margin:0 auto;width: 100%;position:relative;">
-                <div style="float:left; margin:0 6px">发电量</div>
-                <div style="float:right;margin:0 6px">最大出力</div>
-            </div>
-            <div style="margin:0 auto;width: 100%;position:relative;">
-                <div style="float:left; margin:0 6px">最小出力</div>
-                <div style="float:right;margin:0 6px">实时出力</div>
-            </div>        
+            <div style="margin:0 auto;width: 50%;float:left;">                
+                <div style="">平均出力</div>
+                <div style="">最大出力</div>
+                <div style="">实时出力</div>
+            </div>     
         </div>
         <div style="text-align:center;width: 50%; height: 600px; float: left;">
             <div id="container-rpm" style=""></div>
-            <div style="margin:0 auto">机组运行方式</div>
-            <div style="margin:0 auto;width: 100%;">
-                <div style="float:left; margin:0 6px">机组容量</div>
-                <div style="float:right;margin:0 6px">平均出力</div>
+            <div style="margin:0 auto;text-align:center;width:100%">机组运行方式</div>
+            <div style="margin:0 auto;width: 50%;float:left;">
+                <div style="">机组容量</div>
+                <div style="">发电量</div>
+                <div style="">最小出力</div>
             </div>
-            <div style="margin:0 auto;width: 100%;position:relative;">
-                <div style="float:left; margin:0 6px">发电量</div>
-                <div style="float:right;margin:0 6px">最大出力</div>
-            </div>
-            <div style="margin:0 auto;width: 100%;position:relative;">
-                <div style="float:left; margin:0 6px">最小出力</div>
-                <div style="float:right;margin:0 6px">实时出力</div>
+            <div style="margin:0 auto;width: 50%;float:left;">                
+                <div style="">平均出力</div>
+                <div style="">最大出力</div>
+                <div style="">实时出力</div>
+            </div>   
             </div>        
         </div>
     
@@ -320,7 +342,7 @@ $(function () {
 
 
 
-		<div id="container" style="min-width: 310px; max-width: 600px; height: 600px; margin: 0px auto 100px auto"></div>
+		<div id="container" style="min-width: 310px;  height: 800px; margin: 0px 10px 100px 10px"></div>
         <script type="text/javascript">
 			var resize_gauge = function()
 			{
@@ -329,11 +351,11 @@ $(function () {
 					//table_width=document.getElementById('table_id2').offsetWidth;
 					table_width=window.screen.width;
 					wid=table_width/2;
-					container_speed.style.width=(wid)+'px';
-					container_rpm.style.width=(wid)+'px';
+					container_speed.style.width='100%';
+					container_rpm.style.width='100%';
 					
-					container_speed.style.height=(wid/4*3)+'px';
-					container_rpm.style.height=(wid/4*3)+'px';
+					container_speed.style.height=(container_speed.offsetWidth/3*2)+'px';
+					container_rpm.style.height=(container_rpm.offsetWidth/3*2)+'px';
 			}
 			
 			window.onresize= resize_gauge;

@@ -15,6 +15,31 @@
 		<script type="text/javascript" src="./support/easyui/jquery.easyui.min.js"></script>  
 		<script type="text/javascript" src="./support/datatable/media/js/jquery.dataTables.js"></script> 
         
+        <!--日期选择框-->
+		<script src="./support/datepicker/js/mobiscroll.core-2.5.2.js" type="text/javascript"></script>
+        <script src="./support/datepicker/js/mobiscroll.core-2.5.2-zh.js" type="text/javascript"></script>
+        <link href="./support/datepicker/css/mobiscroll.core-2.5.2.css" rel="stylesheet" type="text/css" />
+        <link href="./support/datepicker/css/mobiscroll.animation-2.5.2.css" rel="stylesheet" type="text/css" />
+        <script src="./support/datepicker/js/mobiscroll.datetime-2.5.1.js" type="text/javascript"></script>
+        <script src="./support/datepicker/js/mobiscroll.datetime-2.5.1-zh.js" type="text/javascript"></script>
+        <script src="./support/datepicker/js/mobiscroll.android-ics-2.5.2.js" type="text/javascript"></script>
+        <link href="./support/datepicker/css/mobiscroll.android-ics-2.5.2.css" rel="stylesheet" type="text/css" />
+        
+        <style type="text/css">
+
+			input, select {
+				width: 100%;
+				padding: 5px;
+				margin: 5px 0;
+				border: 1px solid #aaa;
+				box-sizing: border-box;
+				border-radius: 5px;
+				-moz-box-sizing: border-box;
+				-webkit-box-sizing: border-box;
+				-webkit-border-radius: 5px;
+			}
+
+    	</style>
 		<script type="text/javascript">
 $(function () {
         $('#lineContainer').highcharts({
@@ -90,7 +115,7 @@ $(function () {
 				y:50,
                 borderWidth: 0,
 				itemStyle:{
-					 "fontSize": "40px",
+					 "fontSize": "25px",
 					 "fontWeight": "bold"	
 				}
             },
@@ -117,14 +142,27 @@ $(function () {
 		var d = date.getDate();
 		return y+'/'+m+'/'+d;
 	}
+	//控制表格不现实表头和表尾的说明文字
+	$(document).ready(function() {
+		$('#table_id2').dataTable({
+			paging:false,
+			searching:false,
+			info:false
+		});
+	} );
+		//日期选择框的控制
+        $(function () {
+            var curr = new Date().getFullYear();
+            var opt = {
+            }
+            opt.date = {preset : 'date',minDate: new Date(2012,3,10,9,22), maxDate: new Date(2017,7,30,15,44)};
+			<!--Script-->
+			change=function() {
 
-$(document).ready(function() {
-    $('#table_id2').dataTable({
-		paging:false,
-		searching:false,
-		info:false
-	});
-} );
+            $('#test_default').val('').scroller('destroy').scroller($.extend(opt['date'], { theme:'android', mode: 'scroller', display: 'bubble', lang: 'zh' }));
+            };
+			change();
+        });
 		</script>
 	</head>
 <body>
@@ -137,18 +175,19 @@ $(document).ready(function() {
 		}
 </style>
 <script src="./support/highcharts/js/highcharts.js"></script>
-<script src="./support/highcharts/js/modules/exporting.js"></script>
+<script src="./support/highcharts/js/exporting.js"></script>
 <div id="rootContainer" style="text-align:center;">
 <div id="container" style="width:90%;text-align:center;margin:50px auto">
 
 
-<div style="width:600px;margin:0 auto">
+<div style="margin:0 auto">
     <div style="margin:30px 20px">
     
-        <div style="float:left;margin:3px 20px">日期</div>
-        <div style="float:left;">
-            <input id="dd" type="text"  class="easyui-datebox" required></input> 
-        </div> 
+
+        <div id="demo_default" class="demos">
+            <label for="test_default">日期</label>
+            <input type="text" name="test_default" id="test_default" />
+        </div>
         <div style="float:right;margin:0 50px">
             <div>时间跨度</div>
             <input type="radio" id="year" name="year_month_day" value="year" /><label for="year">年</label>
@@ -167,8 +206,8 @@ $(document).ready(function() {
 <hr>
 <br>
 
-<div style="margin-top:50px;height:500px">
-<table id="table_id2" class="display cell-border" cellspacing="0" style="width:100%;font-size:30px;height:400px">   
+<div style="margin-top:50px;height:600px">
+<table id="table_id2" class="display cell-border" cellspacing="0" style="width:100%;font-size:30px;height:600px">   
 	<caption><b>当日电网发电情况</b></caption>
     <thead>   
         <tr>   
