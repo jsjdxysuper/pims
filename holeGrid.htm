@@ -29,15 +29,10 @@
         <style type="text/css">
 
 			input, select {
-				width: 100%;
 				padding: 5px;
 				margin: 5px 0;
 				border: 1px solid #aaa;
-				box-sizing: border-box;
-				border-radius: 5px;
-				-moz-box-sizing: border-box;
-				-webkit-box-sizing: border-box;
-				-webkit-border-radius: 5px;			
+				border-radius: 5px;		
 			}
 
     	</style>
@@ -131,16 +126,21 @@ $(function () {
 	} );
 		//日期选择框的控制
         $(function () {
-            var curr = new Date().getFullYear();
-            var opt = {
-            }
-            opt.date = {preset : 'date',minDate: new Date(2012,3,10,9,22), maxDate: new Date(2017,7,30,15,44)};
-			<!--Script-->
-			change=function() {
-
-            $('#test_default').val('').scroller('destroy').scroller($.extend(opt['date'], { theme:'android', mode: 'scroller', display: 'modal', lang: 'zh' }));
-            };
-			change();
+			var currYear = (new Date()).getFullYear();	
+			var opt={};
+			opt.date = {preset : 'date'};
+			opt.datetime = {preset : 'datetime'};
+			opt.time = {preset : 'time'};
+			opt.default = {
+				theme: 'android-ics light', //皮肤样式
+		        display: 'modal', //显示方式 
+		        mode: 'mixed', //日期选择模式
+				lang:'zh',
+		        startYear:currYear - 10, //开始年份
+		        endYear:currYear + 10 //结束年份
+			};
+			$("#appDate").val('').scroller('destroy').scroller($.extend(opt['date'], opt['default']));
+			$("#time_span").height('32px');
         });
 		</script>
 	</head>
@@ -156,18 +156,21 @@ $(function () {
 <script src="./support/highcharts/js/highcharts.js"></script>
 <script src="./support/highcharts/js/exporting.js"></script>
 
-
-            <label for="test_default" style="float:left;margin-right:10px;">日期</label>
-            <input type="text" name="test_default" id="test_default" />
-            <label for="test_default" style="float:left;margin-right:10px;">时间跨度</label>
-            <select name="time_span" id="time_span" >
-                <option value="year">年</option>
-                <option value="month">月</option>
-                <option value="day">日</option>
-                <option value="real_time">实时</option>
-            </select>
-
-
+<div style="width:100%">
+	<div style="float:left;width:50%;margin-top:10px;margin-left:10px;">	
+        <label for="test_default" style="">日期</label>
+        <input type="text" name="test_default" id="appDate" style="display:block" />
+    </div>
+    <div style="float:left;width:40%;margin-top:10px;margin-left:10px;">
+        <label for="test" style="">时间跨度</label>
+        <select name="time_span" id="time_span" style="display:block;height:32px">
+            <option value="year">年</option>
+            <option value="month">月</option>
+            <option value="day">日</option>
+            <option value="real_time">实时</option>
+        </select>
+	</div>
+</div>
 
 <div id="lineContainer" style="width: 100%;height: 400px;"></div>
 
