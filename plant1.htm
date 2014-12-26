@@ -412,25 +412,46 @@ $(function () {
         });
 
 		</script>
+                                <style type="text/css">
+
+			#appDate,#form-field-select-1 {
+				display:block;
+				padding: 5px;
+				margin: 5px 0;
+				border: 1px solid #aaa;
+				border-radius: 5px;		
+			}
+
+			label{
+				font-size:18px;
+				display:block;
+				padding: 5px;
+				margin: 5px 0;
+			}
+
+    	</style>
 	</head>
 	<body>
 <script src="./support/highcharts/js/highcharts.js"></script>
 <script src="./support/highcharts/js/modules/exporting.js"></script>
 <script type="text/javascript" src="./support/highcharts/js/highcharts-more.js"></script> 
 
-<div style="width:100%">
-	<div style="float:left;width:50%;margin-top:10px;margin-left:10px;">	
-        <label for="test_default" style="">日期</label>
-        <input type="text" name="test_default" id="appDate" style="display:block" />
+<div style="">
+	<div style=";margin-left:10px;">	
+        <label for="test_default" style="float:left;width:100px">日&nbsp;&nbsp;&nbsp;&nbsp;期</label>
+        <input type="text" name="test_default" id="appDate" style="width:100px;float:left" />
     </div>
-    <div style="float:left;width:40%;margin-top:10px;margin-left:10px;">
-        <label for="test" style="">时间跨度</label>
-        <select name="time_span" id="time_span" style="display:block;height:32px">
-            <option value="year">年</option>
-            <option value="month">月</option>
-            <option value="day">日</option>
-            <option value="real_time">实时</option>
+    <div style="clear:left;margin-left:10px;">
+
+        <label for="form-field-select-1" style="float:left;width:100px">时间跨度</label>
+
+        <select class="form-control" id="form-field-select-1" style="width:100px;float:left">
+            <option value="">实时</option>
+            <option value="AL">年</option>
+            <option value="AK">月</option>
+            <option value="AZ">日</option>
         </select>
+														
 	</div>
 </div>
 
