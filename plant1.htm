@@ -476,7 +476,19 @@ $(function () {
 		<div id="container3" style=" height: 400px;"></div>
 		<!--ace support-->
 		<script type="text/javascript">
-			window.jQuery || document.write("<script src='./support/ace/assets/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+			//window.jQuery || document.write("<script src='./support/ace/assets/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+				
+				setDate=function () {
+	
+				var now = new Date();
+				var year = now.getYear();
+				var month = now.getMonth();
+				var day = now.getDate();
+				var date_now =(year+1900)+'-'+(month+1)+'-'+day
+				//alert(date_now);
+				document.getElementById("appDate").value=date_now;
+			};
+			window.onload=setDate;
 		</script>
 
 		</script>

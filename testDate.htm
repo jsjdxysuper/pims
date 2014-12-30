@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="./support/jquery-1.11.2.min.js"></script>
+
+<title>无标题文档</title>
+
+</head>
+
+<body>
+<input id="date_test" type="text"/>
+<script type="text/javascript">
+$(function () {
+	
+	var now = new Date();
+	var year = now.getYear();
+	var month = now.getMonth();
+	var day = now.getDate();
+	alert(year+1900);
+	document.getElementById("date_test").value=year+'-'+(month+1)+'-'+day;
+});
+</script>
+</body>
+</html>

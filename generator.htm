@@ -371,6 +371,18 @@ $(function () {
 
 		<div id="container" style=" height: 400px;"></div>
         <script type="text/javascript">
+			setDate=function () {
+	
+				var now = new Date();
+				var year = now.getYear();
+				var month = now.getMonth();
+				var day = now.getDate();
+				var date_now =(year+1900)+'-'+(month+1)+'-'+day
+				//alert(date_now);
+				document.getElementById("appDate").value=date_now;
+			};
+			window.onload=setDate;
+			//setDate();
 			var resize_gauge = function()
 			{
 					container_speed=document.getElementById('container-speed');
@@ -387,6 +399,8 @@ $(function () {
 			
 			window.onresize= resize_gauge;
 			resize_gauge();
+			
+
         </script>
 	</body>
 </html>
